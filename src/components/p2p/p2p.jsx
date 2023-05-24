@@ -13,24 +13,20 @@ export default function p2p() {
 
   const turnPlayed = (p, pos) => {
     const tempGameState = [...gameState];
-    if (pos == 0) {
-      for (let i = 5; 0 <= i; i--) {
-        console.log(i);
-        if (gameState[i][pos] == 0) {
-          if (p == p1) {
-            tempGameState[i][pos] = 1;
-          } else {
-            tempGameState[i][pos] = 2;
-          }
-          console.log(tempGameState);
-          setGameState(tempGameState);
-          break;
+    for (let i = 5; 0 <= i; i--) {
+      if (gameState[i][pos] == 0) {
+        if (p == p1) {
+          tempGameState[i][pos] = 1;
+        } else {
+          tempGameState[i][pos] = 2;
         }
+        setGameState(tempGameState);
+        break;
       }
     }
   };
   useEffect(() => {
-    turnPlayed(p1, 0);
+    turnPlayed(p2, 2);
   }, []);
 
   return <div></div>;
