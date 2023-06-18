@@ -1,14 +1,29 @@
 import React, { useEffect, useState } from "react";
+import boardLayerWhite from "../../assets/images/board-layer-white-large.svg";
+import boardLayerBlack from "../../assets/images/board-layer-black-large.svg";
+import "./p2p.css";
 let p1 = 1;
 let p2 = 2;
+
 export default function p2p() {
+  const posFinder = (e) => {
+    let xpos = e.clientX - e.target.offsetLeft;
+    for (let i = 0; i <= 6; i++) {
+      if (65 * i <= xpos && 65 * (i + 1) >= xpos) {
+        console.log(xpos);
+        turnPlayed(p1, i);
+        console.log(gameState);
+      }
+    }
+  };
+
   const [gameState, setGameState] = useState([
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
-    [9, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0],
   ]);
 
   const turnPlayed = (p, pos) => {
@@ -25,9 +40,15 @@ export default function p2p() {
       }
     }
   };
-  useEffect(() => {
-    turnPlayed(p2, 2);
-  }, []);
-
-  return <div></div>;
+  return (
+    <div className="p2p">
+      <img
+        className="boardWhite"
+        useMap="#gameBoard"
+        src={boardLayerWhite}
+        onClick={posFinder}
+      />
+      <img className="boardBlack" src={boardLayerBlack} />
+    </div>
+  );
 }
