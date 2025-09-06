@@ -1,0 +1,22 @@
+.rules-container {
+  max-width: 400px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  padding: 2rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.rules-container h2 {
+  margin-bottom: 1rem;
+}
+.rules-container ul {
+  padding-left: 1.2rem;
+}
+.rules-container li {
+  margin-bottom: 0.7rem;
+  font-size: 1.1rem;
+}

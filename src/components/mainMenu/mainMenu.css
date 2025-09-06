@@ -1,76 +1,76 @@
 .Menu {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
+  background: #f7f7f7;
 }
 
 .holder {
-  background-color: #7945ff;
-  width: 480px;
-  height: 435px;
-  border-radius: 40px;
-  border: 3px solid #000000;
-  box-shadow: 0px 10px 0px #000000;
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.logo {
-  padding-top: 70px;
-  padding-bottom: 79px;
-}
-.pvp {
-  width: 400px;
-  height: 72px;
-  background-color: #ffce67;
-  border: 3px solid #000000;
-  box-shadow: 0px 10px 0px #000000;
-  border-radius: 20px;
-  margin-bottom: 30px;
+  gap: 2rem;
+  width: 350px;
+  max-width: 90vw;
 }
 
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+.pvp {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #e63946;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
 .pvp:hover {
-  border: 3px solid #5c2dd5;
-  box-shadow: 0px 10px 0px #5c2dd5;
+  background: #d62839;
 }
 
 .pvp img {
-  padding-top: 13px;
-  padding-left: 301px;
-}
-
-.pvp span {
-  position: absolute;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 31px;
-  padding: 20px 21px 99px;
+  width: 32px;
+  height: 32px;
 }
 
 .rules {
-  width: 400px;
-  height: 72px;
-  background: #ffffff;
-  border: 3px solid #000000;
-  box-shadow: 0px 10px 0px #000000;
-  border-radius: 20px;
-  font-family: "Space Grotesk";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 31px;
+  background: #457b9d;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
 }
 
-.rules:hover {
-  border: 3px solid #5c2dd5;
-  box-shadow: 0px 10px 0px #5c2dd5;
-}
-
-.rules p {
-  padding-left: 20px;
-  padding-top: 21px;
+@media (max-width: 600px) {
+  .holder {
+    padding: 1rem;
+    width: 98vw;
+    gap: 1.2rem;
+  }
+  .logo {
+    width: 80px;
+  }
+  .pvp, .rules {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+  .pvp img {
+    width: 24px;
+    height: 24px;
+  }
 }
