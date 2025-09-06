@@ -1,76 +1,105 @@
-.Menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;500&display=swap');
+
+.menu-bg {
   min-height: 100vh;
-  background: #f7f7f7;
+  width: 100vw;
+  background: #5c2dd5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.holder {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+.menu-card {
+  background: #7945ff;
+  border-radius: 40px;
+  border: 4px solid #000;
+  box-sizing: border-box;
+  width: 420px;
+  max-width: 95vw;
+  padding: 3.5rem 2rem 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  width: 350px;
-  max-width: 90vw;
+  gap: 2.2rem;
+  box-shadow: 0 8px 0 #000;
+}
+.gamelogo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  box-sizing: border-box;
 }
 
 .logo {
-  width: 120px;
-  height: auto;
+  width: 60px;
+  margin-bottom: 1.5rem;
 }
 
-.pvp {
+.menu-btn {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  background: #e63946;
-  color: #fff;
-  padding: 1rem 2rem;
-  border-radius: 12px;
+  justify-content: space-between;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  border-radius: 20px;
+  border: 3px solid #000;
+  box-shadow: 0 8px 0 #000;
+  padding: 1.1rem 2rem;
+  margin-bottom: 1.2rem;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: background 0.2s;
-}
-.pvp:hover {
-  background: #d62839;
+  transition: box-shadow 0.2s, background 0.2s;
+  outline: none;
 }
 
-.pvp img {
-  width: 32px;
-  height: 32px;
+.pvp-btn {
+  background: #ffce67;
+  color: #000;
+  margin-bottom: 1.2rem;
 }
 
-.rules {
-  background: #457b9d;
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: center;
+.pvp-btn img {
+  width: 40px;
+  height: 40px;
+}
+
+.pvp-btn:hover {
+  background: #ffe699;
+  box-shadow: 0 12px 0 #7945ff;
+}
+
+.rules-btn {
+  background: #fff;
+  color: #000;
+  justify-content: flex-start;
+}
+
+.rules-btn:hover {
+  background: #f3f3f3;
+  box-shadow: 0 12px 0 #7945ff;
 }
 
 @media (max-width: 600px) {
-  .holder {
-    padding: 1rem;
+  .menu-card {
     width: 98vw;
+    padding: 2rem 0.5rem;
     gap: 1.2rem;
   }
-  .logo {
-    width: 80px;
+  .gamelogo {
+    width: 18px;
+    height: 18px;
   }
-  .pvp, .rules {
-    font-size: 0.95rem;
+  .logo {
+    width: 40px;
+  }
+  .menu-btn {
+    font-size: 16px;
     padding: 0.7rem 1rem;
   }
-  .pvp img {
-    width: 24px;
-    height: 24px;
+  .pvp-btn img {
+    width: 28px;
+    height: 28px;
   }
 }
