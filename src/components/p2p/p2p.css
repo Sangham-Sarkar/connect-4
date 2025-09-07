@@ -1,32 +1,419 @@
-.p2p {
-  width: 100vw;
-  height: 100vh;
+:root {
+  --purple-main: #5c2dd5;
+  --purple-light: #7945ff;
+  --pink: #fd6687;
+  --yellow: #ffce67;
+  --black: #000000;
+  --white: #ffffff;
+  --font-main: "Space Grotesk", sans-serif;
+}
+
+.p2p-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--purple-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Changed for better vertical spacing */
+  font-family: var(--font-main);
+  padding: 1rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Header */
+.p2p-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 632px; /* Use max-width for responsiveness */
+  margin-bottom: 1rem;
+}
+
+.p2p-header .header-btn {
+  background-color: var(--purple-main);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  z-index: 10;
+  border: none;
+}
+.p2p-header .header-btn:hover {
+  background-color: var(--purple-light);
+}
+
+.p2p-logo {
+  width: 50px;
+}
+
+/* Main Game Area */
+.p2p-main {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem; /* Reduced gap slightly */
+  width: 100%;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
 }
 
-.boardWhite {
-  z-index: 2;
-  height: 70%;
+/* Player Cards */
+.player-card {
+  background-color: var(--white);
+  border: 3px solid var(--black);
+  border-radius: 20px;
+  box-shadow: 0 10px 0 var(--black);
+  width: 140px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-transform: uppercase;
 }
-
-.boardBlack {
+.player-card h3 {
+  font-size: 20px;
+  margin: 0;
+}
+.player-card .score {
+  font-size: 56px;
+  font-weight: bold;
+  margin: 0;
+}
+.player-card .player-icon {
   position: absolute;
-  padding-top: 15px;
-  height: 70%;
+  width: 54px;
+  height: 59px;
+  top: -30px;
 }
-.back-btn {
-  background: #457b9d;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1.2rem;
-  font-size: 1rem;
+
+/* Board */
+.board-area {
+  position: relative;
+  width: 100%;
+  max-width: 632px;
+  /* Aspect ratio to maintain shape */
+  aspect-ratio: 632 / 584;
+}
+
+.marker-container {
+  position: absolute;
+  top: -7%; /* Use percentage for scaling */
+  left: 0;
+  right: 0;
+  height: 7%;
+  padding: 0 3%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  z-index: 20;
+  pointer-events: none;
+}
+.marker {
+  grid-column-start: calc(var(--col) + 1);
+  width: 70%; /* Relative width */
+  max-width: 40px;
+  justify-self: center;
+}
+
+.board-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.board-white {
+  z-index: 10;
+}
+.board-black {
+  z-index: 1;
+}
+
+/* --- ADJUSTED THIS RULE FOR SIZING --- */
+.board-grid,
+.counters-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  /* Decreased horizontal padding to make columns wider */
+  padding: 4% 3%;
+  /* Decreased gap to reduce space between coins */
+  gap: 1.2% 1.5%;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+.counters-grid {
+  pointer-events: none;
+  z-index: 6;
+}
+
+.column {
   cursor: pointer;
-  margin-bottom: 1rem;
-  transition: background 0.2s;
+  border-radius: 50%;
 }
-.back-btn:hover {
-  background: #1d3557;
+
+.cell-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.counter {
+  width: 100%;
+  height: 100%;
+  animation: drop 0.4s ease-out forwards;
+}
+
+@keyframes drop {
+  from {
+    transform: translateY(-500%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Footer (Turn/Winner) */
+.p2p-footer {
+  position: relative; /* Changed from absolute */
+  margin-top: 1rem;
+  z-index: 20;
+}
+
+.turn-indicator {
+  width: 200px;
+  height: 100px;
+  border-radius: 20px;
+  border: 3px solid var(--black);
+  box-shadow: 0 10px 0 var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.player-1-turn {
+  background-color: var(--pink);
+}
+.player-2-turn {
+  background-color: var(--yellow);
+  color: var(--black);
+}
+.turn-indicator p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.turn-indicator .timer-text {
+  font-size: 56px;
+}
+
+.winner-display {
+  background: var(--white);
+  border-radius: 20px;
+  border: 3px solid var(--black);
+  box-shadow: 0 10px 0 var(--black);
+  padding: 1rem 3rem;
+  text-align: center;
+  min-width: 280px;
+  box-sizing: border-box;
+}
+.winner-display p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.winner-display h3 {
+  margin: 0;
+  font-size: 56px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.winner-display .play-again-btn {
+  background-color: var(--purple-main);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 1rem;
+  border: none;
+}
+.winner-display .play-again-btn:hover {
+  background-color: var(--pink);
+}
+
+/* Pause Menu */
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.pause-menu-card {
+  background: var(--purple-light);
+  color: var(--white);
+  border-radius: 40px;
+  border: 3px solid var(--black);
+  box-shadow: 0 10px 0 var(--black);
+  width: 100%;
+  max-width: 480px;
+  padding: 2.5rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+.pause-menu-card h2 {
+  font-size: 56px;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+.pause-menu-card button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 24px;
+  border-radius: 20px;
+  border: 3px solid var(--black);
+  box-shadow: 0 8px 0 var(--black);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  background-color: var(--white);
+  color: var(--black);
+  text-transform: uppercase;
+}
+.pause-menu-card button:last-child {
+  margin-bottom: 0;
+}
+.pause-menu-card .quit-btn {
+  background-color: var(--pink);
+  color: var(--white);
+}
+
+/* -- Media Queries for Responsiveness -- */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .p2p-main {
+    flex-direction: column;
+    order: 2; /* Change order to put board first */
+  }
+
+  .player-card {
+    width: 120px;
+    height: 70px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+  .player-card h3 {
+    font-size: 16px;
+  }
+  .player-card .score {
+    font-size: 32px;
+  }
+  .player-card .player-icon {
+    position: static;
+    width: 30px;
+    height: auto;
+  }
+
+  /* Re-order player cards for column layout */
+  .player-card.player-1 { order: 1; }
+  .board-area { order: 2; }
+  .player-card.player-2 { order: 3; }
+
+  .p2p-header {
+    order: 1;
+  }
+  .p2p-footer {
+    order: 3;
+    position: static; /* Let it flow in the document */
+    transform: none;
+    margin-top: auto; /* Push to bottom */
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+  .p2p-container {
+    padding: 1rem 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .p2p-header .header-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+
+  .p2p-logo {
+    width: 40px;
+  }
+
+  .p2p-main {
+    gap: 1rem;
+  }
+
+  .player-card {
+    width: 100px;
+    height: 60px;
+  }
+
+  .turn-indicator {
+    width: 160px;
+    height: 80px;
+  }
+  .turn-indicator p {
+    font-size: 14px;
+  }
+  .turn-indicator .timer-text {
+    font-size: 40px;
+  }
+
+  .winner-display {
+    min-width: 240px;
+    padding: 0.8rem 2rem;
+  }
+  .winner-display h3 {
+    font-size: 40px;
+  }
+
+  .pause-menu-card {
+    padding: 1.5rem;
+  }
+  .pause-menu-card h2 {
+    font-size: 40px;
+  }
+  .pause-menu-card button {
+    font-size: 18px;
+    padding: 0.8rem;
+  }
 }
