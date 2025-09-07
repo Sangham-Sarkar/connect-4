@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./p2p.css";
 
-// Import assets
 import logo from "../../assets/images/logo.svg";
 import playerOneIcon from "../../assets/images/player-one.svg";
 import playerTwoIcon from "../../assets/images/player-two.svg";
@@ -21,7 +20,6 @@ function createEmptyBoard() {
 }
 
 function checkWinner(board) {
-  // Check horizontal
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c <= COLS - 4; c++) {
       const slice = board[r].slice(c, c + 4);
@@ -30,7 +28,6 @@ function checkWinner(board) {
       }
     }
   }
-  // Check vertical
   for (let c = 0; c < COLS; c++) {
     for (let r = 0; r <= ROWS - 4; r++) {
       if (
@@ -43,7 +40,6 @@ function checkWinner(board) {
       }
     }
   }
-  // Check diagonal (down-right)
   for (let r = 0; r <= ROWS - 4; r++) {
     for (let c = 0; c <= COLS - 4; c++) {
       if (
@@ -56,7 +52,6 @@ function checkWinner(board) {
       }
     }
   }
-  // Check diagonal (up-right)
   for (let r = 3; r < ROWS; r++) {
     for (let c = 0; c <= COLS - 4; c++) {
       if (
@@ -74,7 +69,7 @@ function checkWinner(board) {
 
 export default function P2P({ onBackToMenu }) {
   const [board, setBoard] = useState(createEmptyBoard());
-  const [currentPlayer, setCurrentPlayer] = useState(1); // 1 is Red, 2 is Yellow
+  const [currentPlayer, setCurrentPlayer] = useState(1); 
   const [winner, setWinner] = useState(null);
   const [isDraw, setIsDraw] = useState(false);
   const [scores, setScores] = useState({ 1: 0, 2: 0 });
@@ -120,7 +115,6 @@ export default function P2P({ onBackToMenu }) {
     }
   };
 
-  // Effect for timer countdown
   useEffect(() => {
     if (winner || isDraw || isPaused) return;
 
@@ -131,7 +125,6 @@ export default function P2P({ onBackToMenu }) {
     return () => clearInterval(intervalId);
   }, [winner, isDraw, isPaused]);
 
-  // Effect for handling timer expiry
   useEffect(() => {
     if (timer === 0 && !winner && !isDraw && !isPaused) {
       const availableCols = board[0]
@@ -144,7 +137,6 @@ export default function P2P({ onBackToMenu }) {
         handleColumnClick(randomCol);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timer]);
 
 

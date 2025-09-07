@@ -15,21 +15,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Changed for better vertical spacing */
+  justify-content: space-between; 
   font-family: var(--font-main);
   padding: 1rem;
   box-sizing: border-box;
   position: relative;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden; 
 }
 
-/* Header */
 .p2p-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 632px; /* Use max-width for responsiveness */
+  max-width: 632px; 
   margin-bottom: 1rem;
 }
 
@@ -52,17 +51,15 @@
   width: 50px;
 }
 
-/* Main Game Area */
 .p2p-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem; /* Reduced gap slightly */
+  gap: 1.5rem; 
   width: 100%;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  flex-wrap: wrap; 
 }
 
-/* Player Cards */
 .player-card {
   background-color: var(--white);
   border: 3px solid var(--black);
@@ -93,18 +90,16 @@
   top: -30px;
 }
 
-/* Board */
 .board-area {
   position: relative;
   width: 100%;
   max-width: 632px;
-  /* Aspect ratio to maintain shape */
   aspect-ratio: 632 / 584;
 }
 
 .marker-container {
   position: absolute;
-  top: -7%; /* Use percentage for scaling */
+  top: -7%; 
   left: 0;
   right: 0;
   height: 7%;
@@ -117,7 +112,7 @@
 }
 .marker {
   grid-column-start: calc(var(--col) + 1);
-  width: 70%; /* Relative width */
+  width: 70%; 
   max-width: 40px;
   justify-self: center;
 }
@@ -137,7 +132,6 @@
   z-index: 1;
 }
 
-/* --- ADJUSTED THIS RULE FOR SIZING --- */
 .board-grid,
 .counters-grid {
   position: absolute;
@@ -148,9 +142,7 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  /* Decreased horizontal padding to make columns wider */
   padding: 4% 3%;
-  /* Decreased gap to reduce space between coins */
   gap: 1.2% 1.5%;
   box-sizing: border-box;
   z-index: 5;
@@ -187,9 +179,8 @@
   }
 }
 
-/* Footer (Turn/Winner) */
 .p2p-footer {
-  position: relative; /* Changed from absolute */
+  position: relative; 
   margin-top: 1rem;
   z-index: 20;
 }
@@ -258,7 +249,6 @@
   background-color: var(--pink);
 }
 
-/* Pause Menu */
 .pause-overlay {
   position: fixed;
   top: 0;
@@ -318,13 +308,10 @@
   color: var(--white);
 }
 
-/* -- Media Queries for Responsiveness -- */
-
-/* Tablet Styles */
 @media (max-width: 768px) {
   .p2p-main {
     flex-direction: column;
-    order: 2; /* Change order to put board first */
+    order: 2; 
   }
 
   .player-card {
@@ -346,7 +333,6 @@
     height: auto;
   }
 
-  /* Re-order player cards for column layout */
   .player-card.player-1 { order: 1; }
   .board-area { order: 2; }
   .player-card.player-2 { order: 3; }
@@ -356,13 +342,12 @@
   }
   .p2p-footer {
     order: 3;
-    position: static; /* Let it flow in the document */
+    position: static; 
     transform: none;
-    margin-top: auto; /* Push to bottom */
+    margin-top: auto; 
   }
 }
 
-/* Mobile Styles */
 @media (max-width: 480px) {
   .p2p-container {
     padding: 1rem 0.5rem;

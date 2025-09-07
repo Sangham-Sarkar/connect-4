@@ -5,11 +5,11 @@ import P2P from "./components/p2p/p2p";
 import Rules from "./components/rules/Rules";
 
 export default function App() {
-  const [screen, setScreen] = useState("menu"); // "menu" or "p2p"
-  const [gameKey, setGameKey] = useState(0); // for resetting game
+  const [screen, setScreen] = useState("menu");
+  const [gameKey, setGameKey] = useState(0);
 
   const handlePlayAgain = () => {
-    setGameKey((k) => k + 1); // force remount P2P
+    setGameKey((k) => k + 1); 
     setScreen("p2p");
   };
 

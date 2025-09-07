@@ -18,7 +18,6 @@
   box-shadow: 0 8px 0 #000;
   width: 480px;
   max-width: 95vw;
-  /* Reduced padding by about 5% */
   padding: 2.375rem 2.375rem 3.325rem 2.375rem;
   display: flex;
   flex-direction: column;
@@ -111,7 +110,6 @@
 @media (max-width: 600px) {
   .rules-card {
     width: 98vw;
-    /* Reduced padding by about 5% */
     padding: 1.14rem 0.475rem 3.325rem 0.475rem;
   }
   .rules-title {
