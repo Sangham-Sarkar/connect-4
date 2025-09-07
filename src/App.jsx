@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./app.css";
+import "./App.css";
 import MainMenu from "./components/mainMenu/mainMenu";
 import P2P from "./components/p2p/p2p";
 import Rules from "./components/rules/Rules";
